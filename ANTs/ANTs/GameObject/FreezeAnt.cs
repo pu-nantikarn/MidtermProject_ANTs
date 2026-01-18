@@ -17,9 +17,11 @@ namespace ANTs
             Position = position;
         }
 
+        public float FreezeDuration = 5f; // เวลาแช่แข็ง (วินาที)
+
         public override void Update(GameTime gameTime)
         {
-            // เพิ่ม Logic แช่แข็งที่นี่
+            // FreezeAnt ใช้กระสุนแช่แข็ง ศัตรูจะถูกหยุดชั่วคราว
             base.Update(gameTime);
         }
     }

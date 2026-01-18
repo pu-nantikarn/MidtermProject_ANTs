@@ -12,6 +12,11 @@ namespace ANTs
     {
         private float _speed = 5f;
         private Vector2 _velocity;
+        public bool CanPierce = false;
+        public int PierceCount = 0;
+        public bool IsFreezeBullet = false;
+        public bool IsBombBullet = false;
+
 
         public Bullet(Texture2D texture, Vector2 startPos, float angle) : base(texture)
         {

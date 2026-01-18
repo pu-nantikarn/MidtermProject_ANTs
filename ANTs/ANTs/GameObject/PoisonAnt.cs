@@ -20,7 +20,6 @@ namespace ANTs
 
         public override void Update(GameTime gameTime)
         {
-            // เพิ่ม Logic พิษที่นี่ เช่น เช็คศัตรูรอบข้าง
             base.Update(gameTime);
         }
     }

@@ -13,6 +13,8 @@ namespace ANTs
         private float _speed = 0.3f; // ปรับความเร็วตามต้องการ
         private Vector2 _direction;
         public int RowId; // ใช้ระบุกลุ่มของแถว
+        private float freezeTimer = 0f;
+        public bool IsFrozen = false;
 
         // รับ directionVector และ rowId เพิ่มเข้ามา
         public Enemy(Texture2D texture, Vector2 startPosition, Vector2 directionVector, int rowId) : base(texture)
@@ -29,6 +31,15 @@ namespace ANTs
 
         public override void Update(GameTime gameTime)
         {
+            if (IsFrozen)
+            {
+                freezeTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (freezeTimer <= 0)
+                    IsFrozen = false;
+
+                return;
+            }
+
             if (!IsActive) return;
 
             float realSpeed = _speed * Singleton.Instance.EnemySpeed;
@@ -94,6 +105,12 @@ namespace ANTs
                 _enemySpawn.Add(new Enemy(Singleton.Instance.EnemyAnt, basePos + (offset * i), moveDirection, rowCounter));
             }
             return _enemySpawn;
+        }
+
+        public void Freeze(float duration)
+        {
+            IsFrozen = true;
+            freezeTimer = duration;
         }
     }
 }

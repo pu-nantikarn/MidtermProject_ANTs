@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
 namespace ANTs
 {
     public class Player : GameObject
@@ -15,7 +14,8 @@ namespace ANTs
         private float _radius = 60f;
         private Vector2 _center = new Vector2(Singleton.GAMEWIDTH / 2f, Singleton.UI_TOP_HEIGHT + (Singleton.GAMEHEIGHT / 2f));
 
-        public Player(Texture2D texture) : base(texture) {
+        public Player(Texture2D texture) : base(texture)
+        {
         }
 
         public override void Update(GameTime gameTime)
@@ -28,7 +28,8 @@ namespace ANTs
                 newScale = 1.0f + (bulletCount - 25) * 0.02f;
                 if (newScale > 2f) newScale = 2f;
                 Scale = new Vector2(newScale, newScale);
-            }else
+            }
+            else
             {
                 Scale = Vector2.One;
             }
@@ -40,7 +41,7 @@ namespace ANTs
             float maxSpeed = 0.15f;
             // คำนวณมุมระหว่างเมาส์กับจุดศูนย์กลางคุกกี้
             float playerRotation = (float)Math.Atan2(mousePos.Y - _center.Y, mousePos.X - _center.X);
-            float rotationSpeed = maxSpeed / (float)Math.Pow(Scale.X,3);
+            float rotationSpeed = maxSpeed / (float)Math.Pow(Scale.X, 3);
 
             if (rotationSpeed < minSpeed) rotationSpeed = minSpeed;
             Rotation = CustomLerpAngle(Rotation, playerRotation, rotationSpeed);
@@ -77,5 +78,10 @@ namespace ANTs
             float diff = WrapAngle(target - current);
             return current + (diff * speed);
         }
+        public void SetTexture(Texture2D newTexture)
+        {
+            _texture = newTexture;
+        }
+
     }
 }

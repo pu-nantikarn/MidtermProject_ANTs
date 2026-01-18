@@ -5,6 +5,14 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using static ANTs.Singleton;
 
+enum AntType
+{
+    Normal,
+    Poison,
+    Freeze,
+    Bomb
+}
+
 namespace ANTs
 {
     public class MainScene : Game
@@ -25,6 +33,8 @@ namespace ANTs
 
         private KeyboardState _prevKeyboard;
         private float _keyCooldown = 0f;
+        private AntType _currentAnt = AntType.Normal;
+        private int _antUseCount = 0;
 
         public MainScene()
         {
@@ -82,35 +92,43 @@ namespace ANTs
 
                 case GameState.Playing:
                     {
-                        // A = buy Poison Ant (cost 5)
+                        // A = buy Poison Ant (cost 5) ใช้ได้ 3 ครั้ง
                         if (_keyCooldown <= 0f && kb.IsKeyDown(Keys.A))
                         {
                             if (Singleton.Instance.BulletCount >= 5)
+                            {
                                 Singleton.Instance.BulletCount -= 5;
-
+                                _currentAnt = AntType.Poison;
+                                _antUseCount = 3;
+                            }
                             _keyCooldown = 0.2f;
                         }
 
-                        // S = buy Freeze Ant (cost 10)
+                        // S = buy Freeze Ant (cost 10) ใช้ได้ 2 ครั้ง
                         if (_keyCooldown <= 0f && kb.IsKeyDown(Keys.S))
                         {
                             if (Singleton.Instance.BulletCount >= 10)
+                            {
                                 Singleton.Instance.BulletCount -= 10;
-
+                                _currentAnt = AntType.Freeze;
+                                _antUseCount = 2;
+                            }
                             _keyCooldown = 0.2f;
                         }
 
-                        // D = buy Bomb Ant (cost 15)
+                        // D = buy Bomb Ant (cost 15) ใช้ได้ 1 ครั้ง
                         if (_keyCooldown <= 0f && kb.IsKeyDown(Keys.D))
                         {
                             if (Singleton.Instance.BulletCount >= 15)
+                            {
                                 Singleton.Instance.BulletCount -= 15;
-
+                                _currentAnt = AntType.Bomb;
+                                _antUseCount = 1;
+                            }
                             _keyCooldown = 0.2f;
                         }
 
-
-                        UpdatePlaying(gameTime); // แยก Logic การเล่นไปไว้อีก Method เพื่อไม่ให้ Update ยาวเกินไป
+                        UpdatePlaying(gameTime); 
 
                         if (Singleton.Instance.Life <= 0 || Singleton.Instance.BulletCount == 0)
                             Singleton.Instance.CurrentGameState = GameState.GameOver;
@@ -213,7 +231,7 @@ namespace ANTs
                     //Game screen drawing
                     _spriteBatch.Draw(Singleton.Instance.RectTexture, new Vector2(0, Singleton.UI_TOP_HEIGHT), null, new Color(6, 146, 62), 0f, Vector2.Zero, new Vector2(Singleton.GAMEWIDTH, Singleton.GAMEHEIGHT), SpriteEffects.None, 0f);
 
-                    //Cookie drawing
+                    // Cookie drawing
                     _spriteBatch.Draw(Singleton.Instance.Cookie, new Vector2(Singleton.GAMEWIDTH / 2f, Singleton.UI_TOP_HEIGHT + (Singleton.GAMEHEIGHT / 2f)), null, Color.White, 0f, new Vector2(Singleton.Instance.Cookie.Width / 2f, Singleton.Instance.Cookie.Height / 2f), 1.0f, SpriteEffects.None, 0f);
 
                     // วาด Objects
@@ -344,7 +362,38 @@ namespace ANTs
 
             //ระบบยิงกระสุน (คลิกเมาส์ซ้าย)
             Bullet newBullet = _player.Fire();
-            if (newBullet != null) _bullets.Add(newBullet);
+            if (newBullet != null)
+            {
+                // ตั้งค่ากระสุนตามชนิดมด
+                switch (_currentAnt)
+                {
+                    case AntType.Poison:
+                        newBullet.CanPierce = true;
+                        newBullet.PierceCount = 5;
+                        break;
+
+                    case AntType.Freeze:
+                        newBullet.IsFreezeBullet = true;
+                        break;
+
+                    case AntType.Bomb:
+                        newBullet.IsBombBullet = true;
+                        break;
+                }
+
+                _bullets.Add(newBullet);
+
+                if (_currentAnt != AntType.Normal)
+                {
+                    _antUseCount--;
+
+                    if (_antUseCount <= 0)
+                    {
+                        _currentAnt = AntType.Normal;
+                        _player.SetTexture(Singleton.Instance.PlayerAnt);
+                    }
+                }
+            }
 
             //ระบบเกิดของศัตรู (Spawn Timer)
             _spawnTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -363,7 +412,7 @@ namespace ANTs
             {
                 _enemies[i].Update(gameTime);
 
-                // ตรวจสอบว่ามดตัวนี้ "ชนคุกกี้" หรือไม่ (IsActive จะเป็น false จากใน Enemy.cs)
+                // ตรวจสอบว่ามดตัวนี้ชนคุกกี้หรือไม่ 
                 if (!_enemies[i].IsActive)
                 {
                     int currentRowId = _enemies[i].RowId;
@@ -384,24 +433,69 @@ namespace ANTs
             {
                 _bullets[i].Update(gameTime);
 
-                // เช็คการชนกับศัตรูทีละตัว
                 bool bulletHit = false;
+
                 for (int j = _enemies.Count - 1; j >= 0; j--)
                 {
                     if (_bullets[i].Rectangle.Intersects(_enemies[j].Rectangle))
                     {
-                        // ถ้าโดนยิง ตายแค่ตัวเดียว (ไม่ต้องลบทั้งแถว)
-                        _enemies.RemoveAt(j);
-                        bulletHit = true;
+                        Enemy hitEnemy = _enemies[j];
 
-                        // เพิ่มคะแนนและคืนกระสุน
+                        // BombAnt
+                        if (_bullets[i].IsBombBullet)
+                        {
+                            float radius = 40f;
+
+                            for (int k = _enemies.Count - 1; k >= 0; k--)
+                            {
+                                if (Vector2.Distance(_enemies[k].Position, hitEnemy.Position) <= radius)
+                                {
+                                    _enemies.RemoveAt(k);
+                                    Singleton.Instance.Score += 10;
+                                    Singleton.Instance.BulletCount += 3;
+                                }
+                            }
+
+                            bulletHit = true;
+                            break;
+                        }
+
+
+                        // FreezeAnt
+                        if (_bullets[i].IsFreezeBullet)
+                        {
+                            hitEnemy.Freeze(5f);
+                            bulletHit = true;
+                            break;
+                        }
+
+                        // PoisonAnt (ยิงทะลุแถว)
+                        if (_bullets[i].CanPierce)
+                        {
+                            _enemies.RemoveAt(j);
+                            Singleton.Instance.Score += 10;
+                            Singleton.Instance.BulletCount += 3;
+
+                            _bullets[i].PierceCount--;
+
+                            if (_bullets[i].PierceCount <= 0)
+                                bulletHit = true;
+
+                            // ไม่ break เพื่อให้กระสุนทะลุไปตัวถัดไป
+                            continue;
+                        }
+
+                        // กระสุนปกติ 
+                        _enemies.RemoveAt(j);
                         Singleton.Instance.Score += 10;
                         Singleton.Instance.BulletCount += 3;
+
+                        bulletHit = true;
                         break;
                     }
                 }
 
-                // ลบกระสุนออกถ้าชนศัตรู หรือ IsActive เป็น false (ออกนอกจอ)
+                // ลบกระสุนออกถ้าชนศัตรู หรือออกนอกจอ
                 if (bulletHit || !_bullets[i].IsActive)
                 {
                     _bullets.RemoveAt(i);
@@ -425,7 +519,7 @@ namespace ANTs
         private void UpdateDifficultyByScore()
         {
             // ทุก ๆ 500 คะแนน เพิ่ม 0.1 เริ่มที่ 500
-            int tier = Singleton.Instance.Score / 500; // 0,1,2,3...
+            int tier = Singleton.Instance.Score / 500; 
 
             float speed = 1.0f + (0.1f * tier);
             if (speed > 1.5f) speed = 1.5f;
