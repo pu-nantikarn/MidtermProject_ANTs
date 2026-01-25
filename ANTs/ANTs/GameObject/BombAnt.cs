@@ -10,7 +10,7 @@ namespace ANTs
 {
     public class BombAnt : GameObject
     {
-        public float ExplosionRadius = 40f;
+        public static float ExplosionRadius = 100f; // ระยะระเบิด
 
         public BombAnt(Texture2D texture, Vector2 position) : base(texture)
         {
@@ -22,15 +22,17 @@ namespace ANTs
             base.Update(gameTime);
         }
 
-        public void Explode(List<Enemy> enemies, Vector2 center)
+        //ความสามารถของ BombAnt (ระเบิดศัตรู)
+        public static void Explode(List<Enemy> enemies, Vector2 explosionCenter)
         {
-            foreach (Enemy e in enemies)
+            //วนลูปตรวจสอบศัตรูทั้งหมดในฉาก
+            for (int k = enemies.Count - 1; k >= 0; k--)
             {
-                if (!e.IsActive) continue;
-
-                if (Vector2.Distance(e.Position, center) <= ExplosionRadius)
+                if (Vector2.Distance(enemies[k].Position, explosionCenter) <= ExplosionRadius)
                 {
-                    e.IsActive = false;
+                    enemies.RemoveAt(k); //กำจัดศัตรู
+                    Singleton.Instance.Score += 10; // เพิ่มคะแนน
+                    Singleton.Instance.BulletCount += 3; //เพิ่มกระสุน
                 }
             }
         }

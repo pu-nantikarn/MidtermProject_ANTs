@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using static ANTs.Singleton;
 
-enum AntType
+public enum AntType
 {
     Normal,
     Poison,
@@ -22,19 +22,14 @@ namespace ANTs
 
         public SpriteFont _font;
 
-        private float _spawnTimer = 0f;
-        private float _spawnInterval = 3f;
-
         private Player _player;
         private List<Enemy> _enemies = new List<Enemy>();
         private List<Bullet> _bullets = new List<Bullet>();
 
-        private int _rowCounter = 0;
-
         private KeyboardState _prevKeyboard;
-        private float _keyCooldown = 0f;
-        private AntType _currentAnt = AntType.Normal;
-        private int _antUseCount = 0;
+        public float _keyCooldown = 0f; //ระยะห่างระหว่างการกด ป้องกันการกดค้าง
+        public AntType _currentAnt = AntType.Normal;
+        public int _antUseCount = 0;
 
         public MainScene()
         {
@@ -67,15 +62,15 @@ namespace ANTs
 
         protected override void Update(GameTime gameTime)
         {
-            //  อ่าน Keyboard แค่ครั้งเดียวต่อเฟรม (แก้ปัญหากด B/A ไม่ติด)
+            //  อ่าน Keyboard แค่ครั้งเดียวต่อเฟรม 
             var kb = Keyboard.GetState();
             _keyCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            // 1. ตรวจสอบปุ่ม Exit และสถานะ Game Over
+            //Check กดปุ่ม Esc เพื่อออกจากเกม 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || kb.IsKeyDown(Keys.Escape))
                 Exit();
 
-            Singleton.Instance.currentMouse = Mouse.GetState();
+            Singleton.Instance.currentMouse = Mouse.GetState(); 
 
             switch (Singleton.Instance.CurrentGameState)
             {
@@ -95,11 +90,12 @@ namespace ANTs
                         // A = buy Poison Ant (cost 5) ใช้ได้ 3 ครั้ง
                         if (_keyCooldown <= 0f && kb.IsKeyDown(Keys.A))
                         {
-                            if (Singleton.Instance.BulletCount >= 5)
+                            if (_currentAnt == AntType.Normal && Singleton.Instance.BulletCount >= 5)
                             {
                                 Singleton.Instance.BulletCount -= 5;
                                 _currentAnt = AntType.Poison;
-                                _antUseCount = 3;
+                                _player.SetSpecialAnt(AntType.Poison, 3 ,Singleton.Instance.PoisonAnt);
+                                
                             }
                             _keyCooldown = 0.2f;
                         }
@@ -107,11 +103,11 @@ namespace ANTs
                         // S = buy Freeze Ant (cost 10) ใช้ได้ 2 ครั้ง
                         if (_keyCooldown <= 0f && kb.IsKeyDown(Keys.S))
                         {
-                            if (Singleton.Instance.BulletCount >= 10)
+                            if (_currentAnt == AntType.Normal && Singleton.Instance.BulletCount >= 10)
                             {
                                 Singleton.Instance.BulletCount -= 10;
                                 _currentAnt = AntType.Freeze;
-                                _antUseCount = 2;
+                                _player.SetSpecialAnt(AntType.Freeze, 2, Singleton.Instance.FreezeAnt);
                             }
                             _keyCooldown = 0.2f;
                         }
@@ -119,19 +115,22 @@ namespace ANTs
                         // D = buy Bomb Ant (cost 15) ใช้ได้ 1 ครั้ง
                         if (_keyCooldown <= 0f && kb.IsKeyDown(Keys.D))
                         {
-                            if (Singleton.Instance.BulletCount >= 15)
+                            if (_currentAnt == AntType.Normal && Singleton.Instance.BulletCount >= 15)
                             {
                                 Singleton.Instance.BulletCount -= 15;
                                 _currentAnt = AntType.Bomb;
-                                _antUseCount = 1;
+                                _player.SetSpecialAnt(AntType.Bomb, 1, Singleton.Instance.BombAnt);
                             }
                             _keyCooldown = 0.2f;
                         }
 
+                        //เรียก method ที่รวม update Playing อื่นๆ  
                         UpdatePlaying(gameTime); 
 
-                        if (Singleton.Instance.Life <= 0 || Singleton.Instance.BulletCount == 0)
+                        //พลังชีวืตหมด => Game Over
+                        if (Singleton.Instance.Life <= 0 )
                             Singleton.Instance.CurrentGameState = GameState.GameOver;
+
 
                         break;
                     }
@@ -150,11 +149,7 @@ namespace ANTs
                         // B = Back to Menu (กลับเมนู)
                         if (_keyCooldown <= 0f && kb.IsKeyDown(Keys.B))
                         {
-                            _enemies.Clear();
-                            _bullets.Clear();
-                            _spawnTimer = 0f;
-                            _spawnInterval = 3f;
-                            _rowCounter = 0;
+                            StartNewGame();
 
                             Singleton.Instance.CurrentGameState = GameState.Menu;
                             _keyCooldown = 0.2f; // กันกดค้างรัว
@@ -166,7 +161,7 @@ namespace ANTs
 
             Singleton.Instance.previousMouse = Singleton.Instance.currentMouse;
 
-            //  อัปเดต prev keyboard หลังจบ switch เท่านั้น
+            //  อัปเดต prev keyboard 
             _prevKeyboard = kb;
 
             base.Update(gameTime);
@@ -183,35 +178,34 @@ namespace ANTs
             {
                 case GameState.Menu:
                     {
+                        //Draw Screen Menu
                         _spriteBatch.Draw(
                             Singleton.Instance.RectTexture,
                             new Rectangle(0, 0, Singleton.SCREENWIDTH, Singleton.SCREENHEIGHT),
                             Color.Black
                         );
 
-                        string title = "ANTs Defense";
-                        Vector2 titleSize = _font.MeasureString(title);
-                        _spriteBatch.DrawString(
-                            _font,
-                            title,
-                            new Vector2((Singleton.SCREENWIDTH - titleSize.X) / 2f, 140f),
-                            Color.White
-                        );
+                        //Draw Title Logo
+                        Texture2D title = Content.Load<Texture2D>("Ants_logo");
+                        _spriteBatch.Draw(title, new Vector2(10,30), null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 
+                        
                         string[] lines =
                         {
                              "Press [SPACE] to Start",
                              "",
-                            "1. Press [SPACE] to start the game",
-                            "2. Use mouse to move, click to shoot",
-                            "3. Press [A] to buy Poison Ant",
-                            "4. Press [S] to buy Freeze Ant",
-                             "5. Press [D] to buy Bomb Ant"
+                             "",
+                            "How to play",
+                            "Use mouse to move, Click to shoot",
+                            "Press [A] to buy Poison Ant",
+                            "Press [S] to buy Freeze Ant",
+                             "Press [D] to buy Bomb Ant"
                         };
 
-                        float startY = 230f;
+                        float startY = 280f;
                         float gap = 28f;
 
+                        //Loop Draw text 
                         for (int i = 0; i < lines.Length; i++)
                         {
                             Vector2 size = _font.MeasureString(lines[i]);
@@ -224,6 +218,11 @@ namespace ANTs
                                 c
                             );
                         }
+                        //Draw ant icon behind text
+                        _spriteBatch.Draw(Singleton.Instance.PoisonAnt, new Vector2(430, 422), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
+                        _spriteBatch.Draw(Singleton.Instance.FreezeAnt, new Vector2(430, 450), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
+                        _spriteBatch.Draw(Singleton.Instance.BombAnt, new Vector2(430, 478), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
+
                         break;
                     }
 
@@ -234,32 +233,31 @@ namespace ANTs
                     // Cookie drawing
                     _spriteBatch.Draw(Singleton.Instance.Cookie, new Vector2(Singleton.GAMEWIDTH / 2f, Singleton.UI_TOP_HEIGHT + (Singleton.GAMEHEIGHT / 2f)), null, Color.White, 0f, new Vector2(Singleton.Instance.Cookie.Width / 2f, Singleton.Instance.Cookie.Height / 2f), 1.0f, SpriteEffects.None, 0f);
 
-                    // วาด Objects
+                    //Draw Player, Enemy, Bullet
                     _player.Draw(_spriteBatch);
                     foreach (var enemy in _enemies) enemy.Draw(_spriteBatch);
                     foreach (var bullet in _bullets) bullet.Draw(_spriteBatch);
 
-                    // --- UI ด้านบน (Score/Wave) ---
+                    // --- UI Top ---
+                    //Draw Score UI
                     _spriteBatch.DrawString(_font, $"SCORE : {Singleton.Instance.Score}", new Vector2(10, 10), Color.White);
 
-                    // --- 3. [ส่วนที่เพิ่ม] วาด UI มดพลังวิเศษที่มุมขวาบน ---
+                    //Draw Ant Store UI (ขวาบน)
                     float startX = Singleton.SCREENWIDTH - 5; // เริ่มจากขอบขวาถอยเข้ามา
                     float uiY = 5; // ตำแหน่งแนวตั้งในแถบ UI บน
-                    float itemSpacing = 100; // ระยะห่างระหว่างเซตไอเทมแต่ละอัน
+                    float itemSpacing = 130; // ระยะห่างระหว่างเซตไอเทมแต่ละอัน
+                    DrawStoreAntUI(startX - (itemSpacing * 0), uiY, "15", "1",Singleton.Instance.BombAnt);
+                    DrawStoreAntUI(startX - (itemSpacing * 1), uiY, "10", "2",Singleton.Instance.FreezeAnt);
+                    DrawStoreAntUI(startX - (itemSpacing * 2), uiY, "5", "3",Singleton.Instance.PoisonAnt);
 
-                    // รายการมดพลังวิเศษ (วาดจากขวาไปซ้าย: Bomb -> Freeze -> Poison)
-                    DrawStoreAntUI(startX - (itemSpacing * 0), uiY, "15", Singleton.Instance.BombAnt);
-                    DrawStoreAntUI(startX - (itemSpacing * 1), uiY, "10", Singleton.Instance.FreezeAnt);
-                    DrawStoreAntUI(startX - (itemSpacing * 2), uiY, "5", Singleton.Instance.PoisonAnt);
-
-                    // --- UI ด้านล่าง (Life/Ammo) ---
-                    // วาดเลือด 5 ดวง (LifeCookie)
+                    // --- UI Bottom ---
+                    //Loop Draw LifeCookie
                     for (int i = 0; i < Singleton.Instance.Life; i++)
                     {
                         _spriteBatch.Draw(Singleton.Instance.LifeCookie, new Vector2(15 + (i * 35), 660), null, Color.White, 0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0f);
                     }
 
-                    // วาดจำนวนกระสุน (BulletAnt)
+                    //Draw จำนวน Bullet
                     _spriteBatch.Draw(Singleton.Instance.BulletAnt, new Vector2(500, 665), Color.White);
                     _spriteBatch.DrawString(_font, $"X {Singleton.Instance.BulletCount}", new Vector2(540, 665), Color.Yellow);
 
@@ -267,12 +265,14 @@ namespace ANTs
 
                 case GameState.GameOver:
                     {
+                        //Draw Screen
                         _spriteBatch.Draw(
                             Singleton.Instance.RectTexture,
                             new Rectangle(0, 0, Singleton.SCREENWIDTH, Singleton.SCREENHEIGHT),
                             Color.Black
                         );
 
+                        //Draw Text Game Over
                         string over = "GAME OVER";
                         Vector2 overSize = _font.MeasureString(over);
                         _spriteBatch.DrawString(
@@ -282,6 +282,7 @@ namespace ANTs
                             Color.Red
                         );
 
+                        //Draw Total Score
                         string scoreText = $"Your Score: {Singleton.Instance.Score}";
                         Vector2 scoreSize = _font.MeasureString(scoreText);
                         _spriteBatch.DrawString(
@@ -291,6 +292,7 @@ namespace ANTs
                             Color.White
                         );
 
+                        //---- Draw Button Restart & Back to menu ----
                         string hint1 = "Press [R] to Restart";
                         string hint2 = "Press [B] to Back to Menu";
 
@@ -321,210 +323,91 @@ namespace ANTs
             base.Draw(gameTime);
         }
 
-        private void DrawStoreAntUI(float x, float y, string cost, Texture2D antTexture)
+        private void DrawStoreAntUI(float x, float y, string cost, string specialAntCount, Texture2D antTexture)
         {
             // จุดอ้างอิงหลัก
             Vector2 pos = new Vector2(x, y);
 
             // ระยะเยื้องแนวตั้ง (Vertical Alignment)
-            // ปรับค่าเหล่านี้เพื่อให้ตัวอักษรและรูปภาพดู "กลาง" เท่ากัน
-            float textOffsetY = 8;  // ขยับตัวอักษรลงมาหน่อย
-            float iconOffsetY = 20; // ขยับรูปภาพ (อิงจากกึ่งกลางรูป)
+            float textOffsetY = 8;  // ขยับตัวอักษรลงมา
+            float iconOffsetY = 20; // ขยับรูปภาพลงมา
 
-            // 1. วาดราคา (Cost)
-            _spriteBatch.DrawString(_font, cost, new Vector2(pos.X - 95, pos.Y + textOffsetY), Color.Yellow);
+            //Draw Cost
+            _spriteBatch.DrawString(_font, cost, new Vector2(pos.X - 95, pos.Y + textOffsetY), Color.White);
 
-            // 2. วาดรูป BulletAnt (มดกระสุน)
+            //Draw icon BulletAnt
             _spriteBatch.Draw(Singleton.Instance.BulletAnt,
                 new Vector2(pos.X - 62, pos.Y + iconOffsetY),
                 null, Color.White, 0f,
                 new Vector2(Singleton.Instance.BulletAnt.Width / 2f, Singleton.Instance.BulletAnt.Height / 2f),
                 0.7f, SpriteEffects.None, 0f);
 
-            // 3. วาดเครื่องหมาย :
+            //Draw ":"
             _spriteBatch.DrawString(_font, ":", new Vector2(pos.X - 50, pos.Y + textOffsetY), Color.White);
 
-            // 4. วาดรูปมดพลังวิเศษ (Special Ant)
+            //Draw Ants per purchase
+            _spriteBatch.DrawString(_font, specialAntCount, new Vector2(pos.X - 38, pos.Y + textOffsetY), Color.Yellow);
+
+            //Draw Special Ant
             _spriteBatch.Draw(antTexture,
-                new Vector2(pos.X - 25, pos.Y + iconOffsetY),
+                new Vector2(pos.X - 10, pos.Y + iconOffsetY),
                 null, Color.White, 0f,
                 new Vector2(antTexture.Width / 2f, antTexture.Height / 2f),
-                0.7f, SpriteEffects.None, 0f);
+                0.8f, SpriteEffects.None, 0f);
         }
 
         private void UpdatePlaying(GameTime gameTime)
         {
-            // ปรับความยากตามคะแนน (เริ่มที่ 500 เพิ่มทีละ 0.1 สูงสุด 1.5)
-            UpdateDifficultyByScore();
+            // ปรับความยากตามคะแนน 
+            Singleton.Instance.UpdateDifficulty();
 
-            //อัปเดต Player (มดหมุนรอบคุกกี้ตามเมาส์)
+            //อัปเดต Player 
             _player.Update(gameTime);
 
-            //ระบบยิงกระสุน (คลิกเมาส์ซ้าย)
-            Bullet newBullet = _player.Fire();
+            //ระบบยิงกระสุน 
+            Bullet newBullet = _player.Fire(ref _currentAnt);
             if (newBullet != null)
             {
-                // ตั้งค่ากระสุนตามชนิดมด
-                switch (_currentAnt)
-                {
-                    case AntType.Poison:
-                        newBullet.CanPierce = true;
-                        newBullet.PierceCount = 5;
-                        break;
-
-                    case AntType.Freeze:
-                        newBullet.IsFreezeBullet = true;
-                        break;
-
-                    case AntType.Bomb:
-                        newBullet.IsBombBullet = true;
-                        break;
-                }
-
                 _bullets.Add(newBullet);
-
-                if (_currentAnt != AntType.Normal)
-                {
-                    _antUseCount--;
-
-                    if (_antUseCount <= 0)
-                    {
-                        _currentAnt = AntType.Normal;
-                        _player.SetTexture(Singleton.Instance.PlayerAnt);
-                    }
-                }
             }
 
             //ระบบเกิดของศัตรู (Spawn Timer)
-            _spawnTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (_spawnTimer >= _spawnInterval)
-            {
-                _rowCounter++;
-                List<Enemy> _spawnAntEnemy = Enemy.SpawnEnemy(_rowCounter, Singleton.Instance.EnemyAnt);
-                _enemies.AddRange(_spawnAntEnemy);
-                _spawnTimer = 0f;
-                if (_spawnInterval > 0.8f) _spawnInterval -= 0.05f;
-            }
+            Enemy.SpawnTimer(gameTime, _enemies);  
 
-            // [ส่วนที่แก้ไข] ตรวจสอบศัตรูและการชนคุกกี้
-            // ใช้ for loop ถอยหลังเพื่อป้องกัน Error เวลาลบข้อมูลใน List
-            for (int i = _enemies.Count - 1; i >= 0; i--)
-            {
-                _enemies[i].Update(gameTime);
+            //ตรวจสอบศัตรูชนคุกกี้
+            Enemy.CheckEnemyCollision(_enemies, gameTime);
 
-                // ตรวจสอบว่ามดตัวนี้ชนคุกกี้หรือไม่ 
-                if (!_enemies[i].IsActive)
-                {
-                    int currentRowId = _enemies[i].RowId;
-
-                    // ลบมดทุกตัวที่มี RowId เดียวกัน (หายไปทั้งแถว)
-                    _enemies.RemoveAll(e => e.RowId == currentRowId);
-
-                    // ลดชีวิต 1 แต้มต่อ 1 แถว
-                    Singleton.Instance.Life--;
-                    Singleton.Instance.BulletCount += 3;
-
-                    break;
-                }
-            }
-
-            //[ส่วนที่แก้ไข] ตรวจสอบกระสุนชนศัตรู
+            //ตรวจสอบกระสุนชนศัตรู
             for (int i = _bullets.Count - 1; i >= 0; i--)
             {
                 _bullets[i].Update(gameTime);
 
-                bool bulletHit = false;
-
-                for (int j = _enemies.Count - 1; j >= 0; j--)
-                {
-                    if (_bullets[i].Rectangle.Intersects(_enemies[j].Rectangle))
-                    {
-                        Enemy hitEnemy = _enemies[j];
-
-                        // BombAnt
-                        if (_bullets[i].IsBombBullet)
-                        {
-                            float radius = 40f;
-
-                            for (int k = _enemies.Count - 1; k >= 0; k--)
-                            {
-                                if (Vector2.Distance(_enemies[k].Position, hitEnemy.Position) <= radius)
-                                {
-                                    _enemies.RemoveAt(k);
-                                    Singleton.Instance.Score += 10;
-                                    Singleton.Instance.BulletCount += 3;
-                                }
-                            }
-
-                            bulletHit = true;
-                            break;
-                        }
-
-
-                        // FreezeAnt
-                        if (_bullets[i].IsFreezeBullet)
-                        {
-                            hitEnemy.Freeze(5f);
-                            bulletHit = true;
-                            break;
-                        }
-
-                        // PoisonAnt (ยิงทะลุแถว)
-                        if (_bullets[i].CanPierce)
-                        {
-                            _enemies.RemoveAt(j);
-                            Singleton.Instance.Score += 10;
-                            Singleton.Instance.BulletCount += 3;
-
-                            _bullets[i].PierceCount--;
-
-                            if (_bullets[i].PierceCount <= 0)
-                                bulletHit = true;
-
-                            // ไม่ break เพื่อให้กระสุนทะลุไปตัวถัดไป
-                            continue;
-                        }
-
-                        // กระสุนปกติ 
-                        _enemies.RemoveAt(j);
-                        Singleton.Instance.Score += 10;
-                        Singleton.Instance.BulletCount += 3;
-
-                        bulletHit = true;
-                        break;
-                    }
-                }
+                bool hasHit = _bullets[i].CheckBulletCollision(_enemies);
 
                 // ลบกระสุนออกถ้าชนศัตรู หรือออกนอกจอ
-                if (bulletHit || !_bullets[i].IsActive)
+                if (hasHit || !_bullets[i].IsActive)
                 {
                     _bullets.RemoveAt(i);
                 }
             }
         }
 
-        //เพิ่ม: reset สถานะเกมให้เริ่มใหม่
+        //reset สถานะเกมให้เริ่มใหม่
         private void StartNewGame()
         {
             Singleton.Instance.Reset();
-
+            Enemy.ResetSpawner();
             _enemies.Clear();
             _bullets.Clear();
 
-            _spawnTimer = 0f;
-            _spawnInterval = 3f;
-            _rowCounter = 0;
+            _currentAnt = AntType.Normal;   
+            if (_player != null)
+            {
+                _player.ChangeTexture(Singleton.Instance.PlayerAnt);
+
+            }
         }
 
-        private void UpdateDifficultyByScore()
-        {
-            // ทุก ๆ 500 คะแนน เพิ่ม 0.1 เริ่มที่ 500
-            int tier = Singleton.Instance.Score / 500; 
-
-            float speed = 1.0f + (0.1f * tier);
-            if (speed > 1.5f) speed = 1.5f;
-
-            Singleton.Instance.EnemySpeed = speed;
-        }
+        
     }
 }

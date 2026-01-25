@@ -1,53 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\",
+  "WorkspaceRootPath": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\mainscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\mainscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\gameobject\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\gameobject\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\gameobject\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\gameobject\\poisonant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\poisonant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\gameobject\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\gameobject\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\gameobject\\freezeant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\gameobject\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\gameobject\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\gameobject\\poisonant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\poisonant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\gameobject\\freezeant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\freezeant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\gameobject\\bombant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Year3\\ComputerGame\\SpaceInvader\\SpaceInvader\\GameObjects\\Enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Year3\\ComputerGame\\SpaceInvader\\SpaceInvader\\GameObjects\\Invader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\gameobject\\bombant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\bombant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_onlyme\\ants\\ants\\ants.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\ants.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\mainscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\mainscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\gameobject\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\gameobject\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Year3\\ComputerGame\\Snake\\Snake\\Snake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\MainScene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|d:\\year3\\computergame\\midtermproject_ants\\ants\\ants\\ants.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CC1B89E0-7C41-4E4D-A206-87C1AC2A9BA8}|ANTs\\ANTs.csproj|solutionrelative:ants\\ants.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -65,148 +74,196 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\Program.cs",
-              "RelativeDocumentMoniker": "ANTs\\Program.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\Program.cs",
-              "RelativeToolTip": "ANTs\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T19:02:10.551Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MainScene.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\MainScene.cs",
-              "RelativeDocumentMoniker": "ANTs\\MainScene.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\MainScene.cs",
-              "RelativeToolTip": "ANTs\\MainScene.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAwwOoAAAANAAAAAAAAAA==",
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\Player.cs",
+              "RelativeDocumentMoniker": "ANTs\\GameObject\\Player.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\Player.cs",
+              "RelativeToolTip": "ANTs\\GameObject\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T18:04:35.509Z"
+              "WhenOpened": "2026-01-16T17:09:26.433Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Player.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\Player.cs",
-              "RelativeDocumentMoniker": "ANTs\\GameObject\\Player.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\Player.cs",
-              "RelativeToolTip": "ANTs\\GameObject\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Title": "PoisonAnt.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\PoisonAnt.cs",
+              "RelativeDocumentMoniker": "ANTs\\GameObject\\PoisonAnt.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\PoisonAnt.cs",
+              "RelativeToolTip": "ANTs\\GameObject\\PoisonAnt.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T17:09:26.433Z"
+              "WhenOpened": "2026-01-17T18:27:00.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\Enemy.cs",
+              "RelativeDocumentMoniker": "ANTs\\GameObject\\Enemy.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\Enemy.cs",
+              "RelativeToolTip": "ANTs\\GameObject\\Enemy.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAowH8AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T17:15:24.911Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Singleton.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\Singleton.cs",
-              "RelativeDocumentMoniker": "ANTs\\Singleton.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\Singleton.cs",
-              "RelativeToolTip": "ANTs\\Singleton.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAQwDsAAAAAAAAAAAAAAA==",
+              "Title": "Bullet.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\Bullet.cs",
+              "RelativeDocumentMoniker": "ANTs\\GameObject\\Bullet.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\Bullet.cs*",
+              "RelativeToolTip": "ANTs\\GameObject\\Bullet.cs*",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T18:11:35.792Z",
+              "WhenOpened": "2026-01-16T17:15:17.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FreezeAnt.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\FreezeAnt.cs",
+              "RelativeDocumentMoniker": "ANTs\\GameObject\\FreezeAnt.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\FreezeAnt.cs",
+              "RelativeToolTip": "ANTs\\GameObject\\FreezeAnt.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T18:28:39.689Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Enemy.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\Enemy.cs",
-              "RelativeDocumentMoniker": "ANTs\\GameObject\\Enemy.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\Enemy.cs",
-              "RelativeToolTip": "ANTs\\GameObject\\Enemy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAvAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\SpaceInvader\\SpaceInvader\\GameObjects\\Enemy.cs",
+              "RelativeDocumentMoniker": "..\\..\\SpaceInvader\\SpaceInvader\\GameObjects\\Enemy.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\SpaceInvader\\SpaceInvader\\GameObjects\\Enemy.cs",
+              "RelativeToolTip": "..\\..\\SpaceInvader\\SpaceInvader\\GameObjects\\Enemy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T17:15:24.911Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GameObject.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\GameObject.cs",
-              "RelativeDocumentMoniker": "ANTs\\GameObject\\GameObject.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\GameObject.cs",
-              "RelativeToolTip": "ANTs\\GameObject\\GameObject.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAswCEAAADGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T20:08:57.282Z"
+              "WhenOpened": "2026-01-25T17:26:53.086Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "PoisonAnt.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\PoisonAnt.cs",
-              "RelativeDocumentMoniker": "ANTs\\GameObject\\PoisonAnt.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\PoisonAnt.cs",
-              "RelativeToolTip": "ANTs\\GameObject\\PoisonAnt.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBgAAAAJAAAAAAAAAA==",
+              "Title": "Invader.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\SpaceInvader\\SpaceInvader\\GameObjects\\Invader.cs",
+              "RelativeDocumentMoniker": "..\\..\\SpaceInvader\\SpaceInvader\\GameObjects\\Invader.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\SpaceInvader\\SpaceInvader\\GameObjects\\Invader.cs",
+              "RelativeToolTip": "..\\..\\SpaceInvader\\SpaceInvader\\GameObjects\\Invader.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T18:27:00.526Z"
+              "WhenOpened": "2026-01-25T17:26:40.126Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Bullet.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\Bullet.cs",
-              "RelativeDocumentMoniker": "ANTs\\GameObject\\Bullet.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\Bullet.cs",
-              "RelativeToolTip": "ANTs\\GameObject\\Bullet.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA8AAABKAAAAAAAAAA==",
+              "Title": "BombAnt.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\BombAnt.cs",
+              "RelativeDocumentMoniker": "ANTs\\GameObject\\BombAnt.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\BombAnt.cs",
+              "RelativeToolTip": "ANTs\\GameObject\\BombAnt.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T17:15:17.807Z"
+              "WhenOpened": "2026-01-17T18:29:37.037Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "FreezeAnt.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\FreezeAnt.cs",
-              "RelativeDocumentMoniker": "ANTs\\GameObject\\FreezeAnt.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\FreezeAnt.cs",
-              "RelativeToolTip": "ANTs\\GameObject\\FreezeAnt.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
+              "Title": "Singleton.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\Singleton.cs",
+              "RelativeDocumentMoniker": "ANTs\\Singleton.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\Singleton.cs",
+              "RelativeToolTip": "ANTs\\Singleton.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwDMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T18:28:39.689Z"
+              "WhenOpened": "2026-01-13T18:11:35.792Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "BombAnt.cs",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\BombAnt.cs",
-              "RelativeDocumentMoniker": "ANTs\\GameObject\\BombAnt.cs",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\GameObject\\BombAnt.cs",
-              "RelativeToolTip": "ANTs\\GameObject\\BombAnt.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAFAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\Program.cs",
+              "RelativeDocumentMoniker": "ANTs\\Program.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\Program.cs",
+              "RelativeToolTip": "ANTs\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T18:29:37.037Z"
+              "WhenOpened": "2026-01-17T19:02:10.551Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "ANTs.csproj",
-              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\ANTs.csproj",
-              "RelativeDocumentMoniker": "ANTs\\ANTs.csproj",
-              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\ANTs.csproj",
-              "RelativeToolTip": "ANTs\\ANTs.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-15T19:45:12.309Z"
+              "Title": "MainScene.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\MainScene.cs",
+              "RelativeDocumentMoniker": "ANTs\\MainScene.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\MainScene.cs",
+              "RelativeToolTip": "ANTs\\MainScene.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAowFcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T18:04:35.509Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "GameObject.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\GameObject.cs",
+              "RelativeDocumentMoniker": "ANTs\\GameObject\\GameObject.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\GameObject\\GameObject.cs",
+              "RelativeToolTip": "ANTs\\GameObject\\GameObject.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:08:57.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MainScene.cs",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\MainScene.cs",
+              "RelativeDocumentMoniker": "..\\..\\MidtermProject_onlyme\\ANTs\\ANTs\\MainScene.cs",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_onlyme\\ANTs\\ANTs\\MainScene.cs",
+              "RelativeToolTip": "..\\..\\MidtermProject_onlyme\\ANTs\\ANTs\\MainScene.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T10:21:57.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Snake.cs",
               "DocumentMoniker": "D:\\Year3\\ComputerGame\\Snake\\Snake\\Snake.cs",
               "RelativeDocumentMoniker": "..\\..\\Snake\\Snake\\Snake.cs",
               "ToolTip": "D:\\Year3\\ComputerGame\\Snake\\Snake\\Snake.cs",
               "RelativeToolTip": "..\\..\\Snake\\Snake\\Snake.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAAAK4AAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAAKAAAABqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T19:42:10.146Z"
+              "WhenOpened": "2026-01-16T19:42:10.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ANTs.csproj",
+              "DocumentMoniker": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\ANTs.csproj",
+              "RelativeDocumentMoniker": "ANTs\\ANTs.csproj",
+              "ToolTip": "D:\\Year3\\ComputerGame\\MidtermProject_ANTs\\ANTs\\ANTs\\ANTs.csproj",
+              "RelativeToolTip": "ANTs\\ANTs.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-15T19:45:12.309Z"
             }
           ]
         }

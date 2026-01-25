@@ -10,19 +10,28 @@ namespace ANTs
 {
     public class FreezeAnt : GameObject
     {
-        public float SlowRate = 0.5f; // ลดความเร็วศัตรูลง 50%
+        public static float FreezeDuration = 5f; // เวลาแช่แข็ง (วินาที)
 
         public FreezeAnt(Texture2D texture, Vector2 position) : base(texture)
         {
             Position = position;
+    
         }
-
-        public float FreezeDuration = 5f; // เวลาแช่แข็ง (วินาที)
 
         public override void Update(GameTime gameTime)
         {
-            // FreezeAnt ใช้กระสุนแช่แข็ง ศัตรูจะถูกหยุดชั่วคราว
             base.Update(gameTime);
+        }
+
+        //ความสามารถของ FreezeAnt ใช้กระสุนแช่แข็ง ศัตรูจะถูกหยุดชั่วคราวทั้งแถว
+        public static void Freeze(List<Enemy> Rowenemies, int targetRowId) {
+            foreach (var enemy in Rowenemies)
+            {
+                if (enemy.RowId == targetRowId)
+                {
+                    enemy.EnemyFreeze(FreezeDuration);
+                }
+            }
         }
     }
 }

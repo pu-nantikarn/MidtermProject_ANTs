@@ -15,12 +15,19 @@ namespace ANTs
         public PoisonAnt(Texture2D texture, Vector2 position) : base(texture)
         {
             Position = position;
-            Scale = new Vector2(1.2f, 1.2f); // ปรับขนาดให้ต่างจากมดปกติเล็กน้อย
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+        }
+
+        //ความสามารถของ PoisonAnt ยิงกระสุนทะลุศัตรู
+        public static void PoisonHit(List<Enemy> enemies, int index)
+        {
+            enemies.RemoveAt(index);// กำจัดศัตรูตัวที่ระบุ
+            Singleton.Instance.Score += 10; //เพิ่มคะแนน
+            Singleton.Instance.BulletCount += 3; //เพิ่มกระสุน
         }
     }
 }
