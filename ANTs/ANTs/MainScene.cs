@@ -219,7 +219,7 @@ namespace ANTs
                         //Draw ant icon behind text
                         _spriteBatch.Draw(Singleton.Instance.PoisonAnt, new Vector2(430, 558), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
                         _spriteBatch.Draw(Singleton.Instance.FreezeAnt, new Vector2(430, 586), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
-                        _spriteBatch.Draw(Singleton.Instance.BombAnt, new Vector2(430, 61), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
+                        _spriteBatch.Draw(Singleton.Instance.BombAnt, new Vector2(430, 614), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
 
                         break;
                     }
