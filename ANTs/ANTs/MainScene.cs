@@ -189,12 +189,11 @@ namespace ANTs
                         Texture2D title = Content.Load<Texture2D>("Ants_logo");
                         _spriteBatch.Draw(title, new Vector2(10,30), null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 
-                        
+                        Vector2 start = _font.MeasureString("Press [SPACE] to Start");
+                        _spriteBatch.DrawString(_font, "Press [SPACE] to Start", new Vector2((Singleton.SCREENWIDTH - start.X ) / 2  , (Singleton.SCREENHEIGHT - start.Y) / 2 ) , Color.Yellow);
+
                         string[] lines =
                         {
-                             "Press [SPACE] to Start",
-                             "",
-                             "",
                             "How to play",
                             "Use mouse to move, Click to shoot",
                             "Press [A] to buy Poison Ant",
@@ -202,26 +201,25 @@ namespace ANTs
                              "Press [D] to buy Bomb Ant"
                         };
 
-                        float startY = 280f;
+                        float startY = 500f;
                         float gap = 28f;
 
                         //Loop Draw text 
                         for (int i = 0; i < lines.Length; i++)
                         {
                             Vector2 size = _font.MeasureString(lines[i]);
-                            Color c = (i == 0) ? Color.Yellow : Color.White;
 
                             _spriteBatch.DrawString(
                                 _font,
                                 lines[i],
                                 new Vector2((Singleton.SCREENWIDTH - size.X) / 2f, startY + i * gap),
-                                c
+                                Color.White
                             );
                         }
                         //Draw ant icon behind text
-                        _spriteBatch.Draw(Singleton.Instance.PoisonAnt, new Vector2(430, 422), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
-                        _spriteBatch.Draw(Singleton.Instance.FreezeAnt, new Vector2(430, 450), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
-                        _spriteBatch.Draw(Singleton.Instance.BombAnt, new Vector2(430, 478), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
+                        _spriteBatch.Draw(Singleton.Instance.PoisonAnt, new Vector2(430, 558), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
+                        _spriteBatch.Draw(Singleton.Instance.FreezeAnt, new Vector2(430, 586), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
+                        _spriteBatch.Draw(Singleton.Instance.BombAnt, new Vector2(430, 61), null, Color.White, 0f, Vector2.Zero, 0.7f, SpriteEffects.None, 0f);
 
                         break;
                     }
